@@ -1,7 +1,6 @@
 *** Settings ***
 Resource          ../resources/app_config.resource
-Resource          ../resources/settings_page.resource
-Resource          ../resources/login_page.resource
+Resource          ../resources/android_res.resource
 
 Test Setup        Start Realm Application
 Test Teardown     Stop Realm Application
@@ -14,5 +13,5 @@ Verify User Can Switch To Testing Endpoint And Login
     Unlock Developer Options By Tapping Version    tap_count=10
     Navigate And Select Testing Endpoint
     
-    Enter Credentials    username=globalstarapps    password=spot1234
+    Enter Credentials    ${User1-Details}[username]   ${User1-Details}[password]
     Submit Login Form

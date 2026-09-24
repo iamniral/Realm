@@ -15,3 +15,20 @@ Verify User Can Switch To Testing Endpoint And Login
     
     Enter Credentials    ${User1-Details}[username]   ${User1-Details}[password]
     Submit Login Form
+
+    #Verify Page Title Is Scan
+    Interact With Config Update Button
+    #Select Configuration From Popup List
+
+    Select Update From Popup List
+    Select INT200 From Popup List
+   # Select Specific Device From List
+
+    Select Device And Proceed To Review
+    Execute Firmware Update
+    Handle Warning And Continue Update
+   # Verify System Update Status
+   
+   # Verify Firmware Update Status
+   # Verify Status Text Visibility
+   Verify Firmware Update Status

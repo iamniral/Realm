@@ -36,7 +36,7 @@ ${ITEM_UPDATE}               xpath=//android.view.View[./android.widget.TextView
 # Locator for the update list Int200 
 ${ITEM_INT200}               xpath=//android.view.View[./android.widget.TextView[@text='UPDATE']]/android.widget.TextView[@text='INTEGRITY 200']
 
-${RADIO_DEVICE_GST}          xpath=//android.view.View[.//android.widget.TextView[@text='gst-010005949515']]/android.view.View[@content-desc='selector_indicator']
+${RADIO_DEVICE_GST}          xpath=//android.view.View[.//android.widget.TextView[@text='gst-010010696390']]/android.view.View[@content-desc='selector_indicator']
 #${RADIO_DEVICE_GST}      xpath=//android.view.View[.//android.widget.TextView[@text='gst-010010695392']]/android.view.View[@content-desc='selector_indicator']
 ${TXT_SELECTION_COUNT}       xpath=//android.widget.TextView[contains(@text, 'devices selected')]
 ${BTN_REVIEW_DEVICES}        xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='REVIEW DEVICES TO UPDATE']]
@@ -77,7 +77,7 @@ Unlock Developer Options By Tapping Version
     [Arguments]    ${tap_count}=10
     Wait Until Element Is Visible    ${VERSION_ELEMENT}    timeout=5s
     FOR    ${counter}    IN RANGE    ${tap_count}
-        Click Element    ${VERSION_ELEMENT}
+    Click Element    ${VERSION_ELEMENT}
     END
     Log To Console    Hello, user is able to Unlock Developer Options By Tapping Version successfully.
 Navigate And Select Testing Endpoint
@@ -185,6 +185,7 @@ Handle Warning And Continue Update
     
     # Log the action to the console terminal
     Log To Console    Click the "CONTINUE UPDATE" confirmation button.
+    sleep      5m
 
 Verify System Update Status
     [Documentation]    Validates that the update is successful when 'Update complete' appears.

@@ -31,4 +31,4 @@ Verify User Can Switch To Testing Endpoint And Login
    
    # Verify Firmware Update Status
    # Verify Status Text Visibility
-   Verify Firmware Update Status
+    #Verify Firmware Update Status

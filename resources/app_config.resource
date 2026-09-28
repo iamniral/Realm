@@ -16,6 +16,7 @@ Start Realm Application
     ...                 appPackage=${APP_PACKAGE}    
     ...                 appActivity=${APP_ACTIVITY}    
     ...                 automationName=UiAutomator2
+    ...                 newCommandTimeout=800    # Keeps the session alive for 5 minutes of idling
 
 Stop Realm Application
     Close Application

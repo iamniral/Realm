@@ -18,8 +18,7 @@ Start Realm Application
     ...                 appActivity=${APP_ACTIVITY}    
     ...                 automationName=UiAutomator2
     ...                 dontStopAppOnReset=true        # Prevents Appium from closing the process on state shifts
-    ...                 newCommandTimeout=600
-      ...                 newCommandTimeout=800    # Keeps the session alive for 5 minutes of idling
+    ...                 newCommandTimeout=800    # Keeps the session alive for 5 minutes of idling
 
 Stop Realm Application
     Close Application

@@ -23,7 +23,7 @@ ${ConfigUpdate_Button}       xpath=//qp1/android.view.View/android.view.View/and
 ${Configuration_Button}      xpath=//android.widget.TextView[@text="Configuration"]
 ${Intergrity200_Button}      xpath=//android.widget.TextView[@text="INTEGRITY 200"]
 ${Config_Profile_Name}       Std_USB_D_12_A_34
-${Alow_Permission}           xpath=//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]#scan scren
+${Alow_Permission}           xpath=//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]
 ${TITLE_LOCATOR}             xpath=//android.view.View[./android.widget.TextView[@text='Scan']]
 #config button
 ${CONFIG_UPDATE_BUTTON}      xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Config/Update']]
@@ -231,18 +231,18 @@ Perform Firmware Update Process
      
    # Verify Status Text Visibility
     #Verify Firmware Update Status
-Check the Firmware Update Status - Success    
-    Check Firmware Update Success Status
+# Check the Firmware Update Status - Success    
+#     Check Firmware Update Success Status
 
 
-Switch To The Testing Endpoint
-    Open Settings Screen
-    Unlock Developer Options By Tapping Version
-    Navigate And Select Testing Endpoint
+# Switch To The Testing Endpoint
+#     Open Settings Screen
+#     Unlock Developer Options By Tapping Version
+#     Navigate And Select Testing Endpoint
 
-Login Mobile App
-    Enter Credentials   ${User1-Details}[username]   ${User1-Details}[password]
-    Submit Login Form
+# Login Mobile App
+#     Enter Credentials   ${User1-Details}[username]   ${User1-Details}[password]
+#     Submit Login Form
      
 # Verify Page Title Is Scan
 #      [Documentation]    Verifies that the page title displays the text 'Scan'.
@@ -253,93 +253,93 @@ Login Mobile App
 #       # Assert that the captured text matches the expected value
 #     Should Be Equal As Strings       ${actual_text}    Scan    
 
-Interact With Filter Button
-    [Documentation]    Verifies that the Filter button is clickable and executes the action.
-    Wait Until Element Is Visible    ${BTN_FILTER}    timeout=200s
-    Click Element                    ${BTN_FILTER}
-    # TODO: Add verification keyword here for the Filter menu pop-up/screen
-    # Example: Wait Until Element Is Visible    xpath=//android.widget.TextView[@text='Filter Options']
+# Interact With Filter Button
+#     [Documentation]    Verifies that the Filter button is clickable and executes the action.
+#     Wait Until Element Is Visible    ${BTN_FILTER}    timeout=200s
+#     Click Element                    ${BTN_FILTER}
+#     # TODO: Add verification keyword here for the Filter menu pop-up/screen
+#     # Example: Wait Until Element Is Visible    xpath=//android.widget.TextView[@text='Filter Options']
     
-Interact With Config Update Button
-    [Documentation]    Verifies that the Config/Update button is clickable and executes the action.
-    Wait Until Element Is Visible    ${BTN_CONFIG_UPDATE}    timeout=245s
-    Click Element                    ${BTN_CONFIG_UPDATE}
-    # Pauses execution for exactly 15 seconds before moving to the next test or teardown
-    Sleep                            15s
-    Log To Console    User is able to Interact With Config Update Button successfully.
-    # TODO: Add verification keyword here for the Configuration screen change
+# Interact With Config Update Button
+#     [Documentation]    Verifies that the Config/Update button is clickable and executes the action.
+#     Wait Until Element Is Visible    ${BTN_CONFIG_UPDATE}    timeout=245s
+#     Click Element                    ${BTN_CONFIG_UPDATE}
+#     # Pauses execution for exactly 15 seconds before moving to the next test or teardown
+#     Sleep                            15s
+#     Log To Console    User is able to Interact With Config Update Button successfully.
+#     # TODO: Add verification keyword here for the Configuration screen change
 
-Interact With Power Off Button
-    [Documentation]    Verifies that the Power Off button is clickable and executes the action.
-    Wait Until Element Is Visible    ${BTN_POWER_OFF}    timeout=10s
-    Click Element                    ${BTN_POWER_OFF}
+# Interact With Power Off Button
+#     [Documentation]    Verifies that the Power Off button is clickable and executes the action.
+#     Wait Until Element Is Visible    ${BTN_POWER_OFF}    timeout=10s
+#     Click Element                    ${BTN_POWER_OFF}
 
-Select Configuration From Popup List
-    #select the configuration from the popup list
-    Wait Until Element Is Visible    ${ITEM_CONFIGURATION}    timeout=10s
-    Click Element                    ${ITEM_CONFIGURATION}
-    Log To Console    User is able to Select Configuration From Popup List successfully.
-    Sleep                            10s
+# Select Configuration From Popup List
+#     #select the configuration from the popup list
+#     Wait Until Element Is Visible    ${ITEM_CONFIGURATION}    timeout=10s
+#     Click Element                    ${ITEM_CONFIGURATION}
+#     Log To Console    User is able to Select Configuration From Popup List successfully.
+#     Sleep                            10s
 
-Select Update From Popup List
-    #select the configuration from the popup list
-    Wait Until Element Is Visible    ${ITEM_UPDATE}    timeout=10s
-    Click Element                    ${ITEM_UPDATE}
-    Log To Console    User is able to Select Update From Popup List successfully.
-    Sleep                            15s
+# Select Update From Popup List
+#     #select the configuration from the popup list
+#     Wait Until Element Is Visible    ${ITEM_UPDATE}    timeout=10s
+#     Click Element                    ${ITEM_UPDATE}
+#     Log To Console    User is able to Select Update From Popup List successfully.
+#     Sleep                            15s
 
-Select INT200 From Popup List
-    #select the configuration from the popup list
-    Wait Until Element Is Visible    ${ITEM_INT200}    timeout=10s
-    Click Element                    ${ITEM_INT200}
-    Log To Console    User is able to Select INT200 From Popup List successfully.
-    Sleep                            15s
+# Select INT200 From Popup List
+#     #select the configuration from the popup list
+#     Wait Until Element Is Visible    ${ITEM_INT200}    timeout=10s
+#     Click Element                    ${ITEM_INT200}
+#     Log To Console    User is able to Select INT200 From Popup List successfully.
+#     Sleep                            15s
 
-Select Device And Proceed To Review
-    [Documentation]    Selects the device row, validates the counter, and clicks the review update button.
-    # 1. Verify initial state shows 0 devices selected
-    Wait Until Element Is Visible    ${TXT_SELECTION_COUNT}    timeout=10s
-    ${initial_text}=                 Get Text                  ${TXT_SELECTION_COUNT}
-    Should Be Equal As Strings       ${initial_text}           0 devices selected
-    Log To Console    Verify initial state shows 0 devices selected.
-    # 2. Click the radio indicator button next to the device name
-    Wait Until Element Is Visible    ${RADIO_DEVICE_GST}       timeout=15s
-    Click Element                    ${RADIO_DEVICE_GST}
-    Log To Console    Click the radio indicator button next to the device name.
-    # 3. Click the "REVIEW DEVICES TO UPDATE" confirmation button
-    Wait Until Element Is Visible    ${BTN_REVIEW_DEVICES}     timeout=5s
-    Click Element                    ${BTN_REVIEW_DEVICES}
-    Log To Console    Click the "REVIEW DEVICES TO UPDATE" confirmation button.
-    # 4. Final pause step at the end of execution
-    Sleep                            5s    
+# Select Device And Proceed To Review
+#     [Documentation]    Selects the device row, validates the counter, and clicks the review update button.
+#     # 1. Verify initial state shows 0 devices selected
+#     Wait Until Element Is Visible    ${TXT_SELECTION_COUNT}    timeout=10s
+#     ${initial_text}=                 Get Text                  ${TXT_SELECTION_COUNT}
+#     Should Be Equal As Strings       ${initial_text}           0 devices selected
+#     Log To Console    Verify initial state shows 0 devices selected.
+#     # 2. Click the radio indicator button next to the device name
+#     Wait Until Element Is Visible    ${RADIO_DEVICE_GST}       timeout=15s
+#     Click Element                    ${RADIO_DEVICE_GST}
+#     Log To Console    Click the radio indicator button next to the device name.
+#     # 3. Click the "REVIEW DEVICES TO UPDATE" confirmation button
+#     Wait Until Element Is Visible    ${BTN_REVIEW_DEVICES}     timeout=5s
+#     Click Element                    ${BTN_REVIEW_DEVICES}
+#     Log To Console    Click the "REVIEW DEVICES TO UPDATE" confirmation button.
+#     # 4. Final pause step at the end of execution
+#     Sleep                            5s    
 
-Execute Firmware Update
-    # Wait for the UPDATE button to appear
-    Wait Until Element Is Visible    ${BTN_UPDATE}    timeout=5
-    # Click the UPDATE button
-    Click Element                    ${BTN_UPDATE}
-    # Log the action to the console terminal
-    Log To Console    Click the "UPDATE" confirmation button.
+# Execute Firmware Update
+#     # Wait for the UPDATE button to appear
+#     Wait Until Element Is Visible    ${BTN_UPDATE}    timeout=5
+#     # Click the UPDATE button
+#     Click Element                    ${BTN_UPDATE}
+#     # Log the action to the console terminal
+#     Log To Console    Click the "UPDATE" confirmation button.
 
-Handle Warning And Continue Update
-    # Wait for the CONTINUE UPDATE button to appear on the warning pop-up
-    Wait Until Element Is Visible    ${BTN_CONTINUE_UPDATE}    timeout=5s
-    # Click the CONTINUE UPDATE button
-    Click Element                    ${BTN_CONTINUE_UPDATE}
-    # Log the action to the console terminal
-    Log To Console    Click the "CONTINUE UPDATE" confirmation button.
-    sleep      5m
+# Handle Warning And Continue Update
+#     # Wait for the CONTINUE UPDATE button to appear on the warning pop-up
+#     Wait Until Element Is Visible    ${BTN_CONTINUE_UPDATE}    timeout=5s
+#     # Click the CONTINUE UPDATE button
+#     Click Element                    ${BTN_CONTINUE_UPDATE}
+#     # Log the action to the console terminal
+#     Log To Console    Click the "CONTINUE UPDATE" confirmation button.
+#     sleep      5m
 
-Check Firmware Update Success Status
-    [Documentation]    Validates that the update is successful when 'Update complete' appears.
-    # 1. Wait for the success indicator element to load on screen (up to 15 seconds)
-    Wait Until Element Is Visible    xpath=${UPDATE_HEADER_XPATH}    timeout=15s 
-    # 2. Log confirmation message directly to your logs & terminal output
-    Log To Console    \n[SUCCESS] The text 'Update complete' is visible. update status: SUCCESSFUL!
-    Log               The update completed successfully.    level=INFO
-    # Optional Step: Complete the interaction by dismissing the screen
-    Wait Until Element Is Visible    xpath=${ACKNOWLEDGE_BTN}    timeout=5s
-    Click Element                    xpath=${ACKNOWLEDGE_BTN}
+# Check Firmware Update Success Status
+#     [Documentation]    Validates that the update is successful when 'Update complete' appears.
+#     # 1. Wait for the success indicator element to load on screen (up to 15 seconds)
+#     Wait Until Element Is Visible    xpath=${UPDATE_HEADER_XPATH}    timeout=15s 
+#     # 2. Log confirmation message directly to your logs & terminal output
+#     Log To Console    \n[SUCCESS] The text 'Update complete' is visible. update status: SUCCESSFUL!
+#     Log               The update completed successfully.    level=INFO
+#     # Optional Step: Complete the interaction by dismissing the screen
+#     Wait Until Element Is Visible    xpath=${ACKNOWLEDGE_BTN}    timeout=5s
+#     Click Element                    xpath=${ACKNOWLEDGE_BTN}
 
 #Verify Status Text Visibility
     # Wait for the element to exist in the DOM structure
@@ -352,20 +352,20 @@ Check Firmware Update Success Status
    # Should Be Equal As Strings    ${actual_text}    No update needed
   #  Log    Success: Verified Current Firmware version is up to date, No update needed.
 
-Check Firmware Update Status - No Update Needed
-    # Scans the active screen dump for the string literal directly
-    Wait Until Page Contains    No update needed    timeout=10s
-    Page Should Contain Text    No update needed
-    Log To Console   Success: The Firmware is already up to date "No update needed." 
+# Check Firmware Update Status - No Update Needed
+#     # Scans the active screen dump for the string literal directly
+#     Wait Until Page Contains    No update needed    timeout=10s
+#     Page Should Contain Text    No update needed
+#     Log To Console   Success: The Firmware is already up to date "No update needed." 
 
-Perform Firmware Update Process
-    #Select Configuration From Popup List  
-    Interact With Config Update Button
-    Select Update From Popup List
-    Select INT200 From Popup List
-    Select Device And Proceed To Review
-    Execute Firmware Update
-    Handle Warning And Continue Update
+# Perform Firmware Update Process
+#     #Select Configuration From Popup List  
+#     Interact With Config Update Button
+#     Select Update From Popup List
+#     Select INT200 From Popup List
+#     Select Device And Proceed To Review
+#     Execute Firmware Update
+#     Handle Warning And Continue Update
      
    # Verify Status Text Visibility
     #Verify Firmware Update Status
@@ -383,6 +383,7 @@ Scroll Down Until Text Is Found
 
 Give The Permission
    # Tap allow on the permission dialog
+    Wait Until Element Is Visible    ${Alow_Permission}
     Click Element         ${Alow_Permission}
 
 Open Config Screen

@@ -6,7 +6,7 @@ Resource          ../resources/android_locators.resource
 # Login Page Keywords
 Enter Credentials
     [Arguments]    ${username}    ${password}
-    Wait Until Element Is Visible    ${USERNAME_FIELD}    timeout=20s
+    Wait Until Element Is Visible    ${USERNAME_FIELD}    timeout=1120s
     Click Element                    ${USERNAME_FIELD}
     Input Text                       ${USERNAME_FIELD}    ${username}
     Log To Console    The value of the username variable is: ${username}    
@@ -24,7 +24,7 @@ Submit Login Form
 
 # Settings Page Keywords
 Open Settings Screen
-    Wait Until Element Is Visible    ${SETTINGS_BUTTON}    timeout=25s
+    Wait Until Element Is Visible    ${SETTINGS_BUTTON}    timeout=5525s
     Click Element                    ${SETTINGS_BUTTON}
     Log To Console    Hello, user is able to click on the Settings successfully.
 

@@ -1,6 +1,6 @@
 *** Settings ***
-Resource          ../resources/app_config.resource
-Resource          ../resources/android_res.resource
+Resource          ../Config/Android_config.resource
+Resource          ../Resources/Android_resources.resource
 
 
 

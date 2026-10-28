@@ -1,6 +1,6 @@
 *** Settings ***
 Library           AppiumLibrary
-Resource          ../resources/android_locators.resource
+Resource          ../Locators/Android_Locators.resource
 
 *** Keywords ***
 # Login Page Keywords

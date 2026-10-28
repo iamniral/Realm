@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.13.7 on win32)" generated="2026-10-28T15:39:47.853144" rpa="false" schemaversion="5">
+<suite id="s1" name="Login Tests" source="C:\Users\Niral.Shah\PycharmProjects\Robot Framework\Realm\Realm\TestCases\login_tests.robot">
+<test id="s1-t1" name="Verify User Can Switch To Testing Endpoint And Login" line="11">
+<kw name="Start Realm Application" owner="Android_config" type="SETUP">
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>platformName=${PLATFORM}</arg>
+<arg>deviceName=${DEVICE_NAME}</arg>
+<arg>appPackage=${APP_PACKAGE}</arg>
+<arg>appActivity=${APP_ACTIVITY}</arg>
+<arg>automationName=UiAutomator2</arg>
+<arg>dontStopAppOnReset=true</arg>
+<arg>newCommandTimeout=800</arg>
+<doc>Opens a new application to the given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.19/guides/caps/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | No     | alias             |</doc>
+<status status="PASS" start="2026-10-28T15:39:49.229226" elapsed="17.001204"/>
+</kw>
+<status status="PASS" start="2026-10-28T15:39:49.227502" elapsed="17.003183"/>
+</kw>
+<kw name="Switch To The Testing Endpoint" owner="Android_resources">
+<kw name="Open Settings Screen" owner="Android_resources">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:43.315787" level="INFO">xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]</msg>
+<arg>${SETTINGS_BUTTON}</arg>
+<arg>timeout=5525s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-28T15:40:06.232255" elapsed="37.084147"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:43.320822" level="INFO">Clicking element 'xpath=//android.widget.ImageView[@content-desc="settings"]'.</msg>
+<msg time="2026-10-28T15:40:43.544674" level="INFO">xpath criteria: //android.widget.ImageView[@content-desc="settings"]</msg>
+<arg>${SETTINGS_BUTTON}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:43.316722" elapsed="0.228261"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Hello, user is able to click on the Settings successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-28T15:40:43.545480" elapsed="0.002132"/>
+</kw>
+<status status="PASS" start="2026-10-28T15:40:06.231901" elapsed="37.315889"/>
+</kw>
+<kw name="Unlock Developer Options By Tapping Version" owner="Android_resources">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:43.725926" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-28T15:40:43.548644" elapsed="0.177503"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:43.731512" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-28T15:40:44.558175" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:43.728664" elapsed="0.829852"/>
+</kw>
+<var name="${counter}">0</var>
+<status status="PASS" start="2026-10-28T15:40:43.728443" elapsed="0.830223"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:44.564044" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-28T15:40:44.787761" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:44.559370" elapsed="0.228650"/>
+</kw>
+<var name="${counter}">1</var>
+<status status="PASS" start="2026-10-28T15:40:44.559083" elapsed="0.229090"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:44.793208" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-28T15:40:45.068033" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:44.788840" elapsed="0.279411"/>
+</kw>
+<var name="${counter}">2</var>
+<status status="PASS" start="2026-10-28T15:40:44.788547" elapsed="0.279852"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:45.074035" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-28T15:40:45.831134" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:45.069235" elapsed="0.762100"/>
+</kw>
+<var name="${counter}">3</var>
+<status status="PASS" start="2026-10-28T15:40:45.068915" elapsed="0.762586"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:45.836252" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-28T15:40:46.134502" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:45.832042" elapsed="0.302599"/>
+</kw>
+<var name="${counter}">4</var>
+<status status="PASS" start="2026-10-28T15:40:45.831805" elapsed="0.302924"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:46.140741" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-28T15:40:46.401263" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:46.135121" elapsed="0.266307"/>
+</kw>
+<var name="${counter}">5</var>
+<status status="PASS" start="2026-10-28T15:40:46.134946" elapsed="0.266727"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:46.404923" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-28T15:40:46.650370" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:46.402514" elapsed="0.247930"/>
+</kw>
+<var name="${counter}">6</var>
+<status status="PASS" start="2026-10-28T15:40:46.402260" elapsed="0.248229"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:46.653992" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-28T15:40:46.864312" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:46.650789" elapsed="0.213627"/>
+</kw>
+<var name="${counter}">7</var>
+<status status="PASS" start="2026-10-28T15:40:46.650684" elapsed="0.213795"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:46.866498" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-28T15:40:47.172356" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:46.864778" elapsed="0.307790"/>
+</kw>
+<var name="${counter}">8</var>
+<status status="PASS" start="2026-10-28T15:40:46.864640" elapsed="0.308491"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:47.178535" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-28T15:40:47.485574" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:47.174142" elapsed="0.311655"/>
+</kw>
+<var name="${counter}">9</var>
+<status status="PASS" start="2026-10-28T15:40:47.173722" elapsed="0.312221"/>
+</iter>
+<var>${counter}</var>
+<value>${tap_count}</value>
+<status status="PASS" start="2026-10-28T15:40:43.726391" elapsed="3.759665"/>
+</for>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Hello, user is able to Unlock Developer Options By Tapping Version successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-28T15:40:47.486624" elapsed="0.002803"/>
+</kw>
+<status status="PASS" start="2026-10-28T15:40:43.548178" elapsed="3.941531"/>
+</kw>
+<kw name="Navigate And Select Testing Endpoint" owner="Android_resources">
+<kw name="Swipe By Percent" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:47.491742" level="WARN">Keyword 'Swipe By Percent' will not support int in ms for 'duration' in the future. Use timedelta with units ('ms' or 's') instead.</msg>
+<arg>50</arg>
+<arg>80</arg>
+<arg>50</arg>
+<arg>30</arg>
+<arg>1000</arg>
+<doc>Swipes from one percent of the screen to another percent, for an optional ``duration``.
+Normal swipe fails to scale for different screen resolutions, this can be avoided by using this keyword.</doc>
+<status status="PASS" start="2026-10-28T15:40:47.490913" elapsed="1.460724"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:49.286154" level="INFO">xpath criteria: //android.view.View[@clickable='true'][.//android.widget.TextView[@text='Support API Endpoint']]</msg>
+<arg>${SUPPORT_API_ENDPOINT}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-28T15:40:48.952481" elapsed="0.333852"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:49.290578" level="INFO">Clicking element 'xpath=//android.view.View[@clickable='true'][.//android.widget.TextView[@text='Support API Endpoint']]'.</msg>
+<msg time="2026-10-28T15:40:50.467956" level="INFO">xpath criteria: //android.view.View[@clickable='true'][.//android.widget.TextView[@text='Support API Endpoint']]</msg>
+<arg>${SUPPORT_API_ENDPOINT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:49.286859" elapsed="1.181412"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Hello, user is able to click on the suppot api endpoint successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-28T15:40:50.469690" elapsed="0.002131"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:51.190015" level="INFO">xpath criteria: //android.view.View[@clickable='true'][.//android.widget.TextView[@text='Testing']]</msg>
+<arg>${TESTING_ENDPOINT}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-28T15:40:50.472585" elapsed="0.717707"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:40:51.196021" level="INFO">Clicking element 'xpath=//android.view.View[@clickable='true'][.//android.widget.TextView[@text='Testing']]'.</msg>
+<msg time="2026-10-28T15:40:52.031431" level="INFO">xpath criteria: //android.view.View[@clickable='true'][.//android.widget.TextView[@text='Testing']]</msg>
+<arg>${TESTING_ENDPOINT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:40:51.190791" elapsed="0.840996"/>
+</kw>
+<status status="PASS" start="2026-10-28T15:40:47.490211" elapsed="4.542016"/>
+</kw>
+<status status="PASS" start="2026-10-28T15:40:06.231386" elapsed="45.801019"/>
+</kw>
+<kw name="Login Mobile App" owner="Android_resources">
+<kw name="Enter Credentials" owner="Android_resources">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-28T15:42:27.584942" level="INFO">xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>timeout=1120s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-28T15:40:52.037535" elapsed="95.548200"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:42:27.590230" level="INFO">Clicking element 'xpath=(//android.widget.EditText)[1]'.</msg>
+<msg time="2026-10-28T15:42:28.841061" level="INFO">xpath criteria: (//android.widget.EditText)[1]</msg>
+<arg>${USERNAME_FIELD}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:42:27.586195" elapsed="1.255228"/>
+</kw>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2026-10-28T15:42:28.847893" level="INFO">Typing text 'globalstarapps' into text field 'xpath=(//android.widget.EditText)[1]'</msg>
+<msg time="2026-10-28T15:42:29.075830" level="INFO">xpath criteria: (//android.widget.EditText)[1]</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:42:28.841913" elapsed="0.234435"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The value of the username variable is: ${username}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-28T15:42:29.076879" elapsed="0.002808"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-28T15:42:29.832573" level="INFO">xpath criteria: (//android.widget.EditText)[2]</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>timeout=15s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-28T15:42:29.080028" elapsed="0.752723"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-28T15:42:29.837500" level="INFO">Clicking element 'xpath=(//android.widget.EditText)[2]'.</msg>
+<msg time="2026-10-28T15:42:30.906971" level="INFO">xpath criteria: (//android.widget.EditText)[2]</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:42:29.833244" elapsed="1.074055"/>
+</kw>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2026-10-28T15:42:30.913142" level="INFO">Typing text 'spot1234' into text field 'xpath=(//android.widget.EditText)[2]'</msg>
+<msg time="2026-10-28T15:42:31.148355" level="INFO">xpath criteria: (//android.widget.EditText)[2]</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-28T15:42:30.907807" elapsed="0.240740"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The value of the password variable is: ${password}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-28T15:42:31.148981" elapsed="0.003219"/>
+</kw>
+<arg>${User1-Details}[username]</arg>
+<arg>${User1-Details}[password]</arg>
+<status status="PASS" start="2026-10-28T15:40:52.036601" elapsed="99.115992"/>
+</kw>
+<kw name="Submit Login Form" owner="Android_resources">
+<kw name="Hide Keyboard" owner="AppiumLibrary">
+<doc>Hides the software keyboard on the device if it is currently visible.</doc>
+<status status="PASS" start="2026-10-28T15:42:31.153986" elapsed="3.015255"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-28T15:42:34.346820" level="INFO">xpath criteria: //android.widget.Button[ancestor::android.view.View[./android.widget.TextView[@text='LOGIN']]]</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-28T15:42:34.169625" elapsed="0.177383"/>
+</kw>
+<kw name="Tap" owner="AppiumLibrary">
+<msg time="2026-10-28T15:42:35.938085" level="INFO">xpath criteria: //android.widget.Button[ancestor::android.view.View[./android.widget.TextView[@text='LOGIN']]]</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Taps the ``element`` for ``count`` times over the ``duration``. </doc>
+<status status="PASS" start="2026-10-28T15:42:34.347360" elapsed="1.591255"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Hello, Varibales entered successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-28T15:42:35.939371" elapsed="0.001949"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Hello, user is able to click on the login successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-28T15:42:35.941801" elapsed="0.001475"/>
+</kw>
+<status status="PASS" start="2026-10-28T15:42:31.153206" elapsed="4.790403"/>
+</kw>
+<status status="PASS" start="2026-10-28T15:40:52.035702" elapsed="103.908055"/>
+</kw>
+<kw name="Stop Realm Application" owner="Android_config" type="TEARDOWN">
+<kw name="Close Application" owner="AppiumLibrary">
+<doc>Closes the current application and the webdriver session.</doc>
+<status status="PASS" start="2026-10-28T15:42:35.945990" elapsed="1.151734"/>
+</kw>
+<status status="PASS" start="2026-10-28T15:42:35.945113" elapsed="1.152972"/>
+</kw>
+<doc>Unlocks developer settings, switc    hes to the testing end point,and attempts a login.</doc>
+<status status="PASS" start="2026-10-28T15:39:49.226884" elapsed="167.871827"/>
+</test>
+<status status="PASS" start="2026-10-28T15:39:47.856719" elapsed="169.245201"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login Tests" id="s1" pass="1" fail="0" skip="0">Login Tests</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-10-28T15:40:47.491742" level="WARN">Keyword 'Swipe By Percent' will not support int in ms for 'duration' in the future. Use timedelta with units ('ms' or 's') instead.</msg>
+</errors>
+</robot>

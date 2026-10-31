@@ -1,6 +1,6 @@
 *** Settings ***
-Resource          ../Config/Android_config.resource
-Resource          ../Resources/Android_resources.resource
+Resource          ../../Config/Android_config.resource
+Resource          ../../Resources/Android_keywords.resource
 
 Test Setup        Start Realm Application
 Test Teardown     Stop Realm Application

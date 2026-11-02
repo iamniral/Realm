@@ -13,5 +13,5 @@ Write SOS command
 
 Read SOS command
     [Documentation]    Checks if the device responds to a basic AT ping.
-    ${response} =    Send AT Command    AT+SOS?
-    should contain    ${response}    1
+    ${response} =    Send AT Command    AT+CGMR?
+    should contain    ${response}    0.2.0

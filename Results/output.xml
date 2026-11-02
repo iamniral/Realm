@@ -1,0 +1,1031 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.6 on win32)" generated="2026-10-31T16:23:42.458890" rpa="false" schemaversion="5">
+<suite id="s1" name="Check fw update status tests" source="D:\Practice Automation\TestCases\Android\Check_fw_update_status_tests.robot">
+<test id="s1-t1" name="Verify the Firmware Update Status - No Update needed" line="11">
+<kw name="Suite And Device Setup" owner="Android_keywords" type="SETUP">
+<kw name="Start Realm Application" owner="Android_config">
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>platformName=${PLATFORM}</arg>
+<arg>deviceName=${DEVICE_NAME}</arg>
+<arg>appPackage=${APP_PACKAGE}</arg>
+<arg>appActivity=${APP_ACTIVITY}</arg>
+<arg>automationName=UiAutomator2</arg>
+<arg>dontStopAppOnReset=true</arg>
+<arg>newCommandTimeout=800</arg>
+<doc>Opens a new application to the given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.19/guides/caps/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | No     | alias             |</doc>
+<status status="PASS" start="2026-10-31T16:23:43.022510" elapsed="4.678909"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:23:43.021829" elapsed="4.679716"/>
+</kw>
+<kw name="Connect To Nordic Device" owner="Firmware_keywords">
+<kw name="Delete All Ports" owner="SerialLibrary">
+<doc>Deletes all ports maintained in the library instance.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.701914" elapsed="0.000088"/>
+</kw>
+<kw name="Add Port" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<arg>baudrate=${BAUD}</arg>
+<arg>timeout=2</arg>
+<doc>Adds new port with specified locator.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.702093" elapsed="0.015829"/>
+</kw>
+<kw name="Open Port" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<doc>Opens specified port.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.718083" elapsed="0.000187"/>
+</kw>
+<kw name="Reset Input Buffer" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<doc>Clears input buffer.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.718362" elapsed="0.000154"/>
+</kw>
+<kw name="Send AT Command" owner="Firmware_keywords">
+<kw name="Write Data" owner="SerialLibrary">
+<arg>${command}${TERMINATOR}</arg>
+<arg>encoding=utf-8</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.718903" elapsed="0.000906"/>
+</kw>
+<kw name="Read Until" owner="SerialLibrary">
+<msg time="2026-10-31T16:23:47.750920" level="INFO">${hex_response} = 4F 4B 0D 0A</msg>
+<var>${hex_response}</var>
+<arg>${TERMINATOR}</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.719916" elapsed="0.031048"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2026-10-31T16:23:47.751323" level="INFO">${clean_hex} = 4F4B0D0A</msg>
+<var>${clean_hex}</var>
+<arg>${hex_response}</arg>
+<arg>${SPACE}</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.751099" elapsed="0.000249"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-31T16:23:47.752184" level="INFO">${bytes} = OK
+</msg>
+<var>${bytes}</var>
+<arg>bytes.fromhex('${clean_hex}')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.751440" elapsed="0.000769"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-31T16:23:47.752879" level="INFO">${response} = OK
+</msg>
+<var>${response}</var>
+<arg>$bytes.decode('utf-8')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.752308" elapsed="0.000596"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-10-31T16:23:47.753215" level="INFO">Decoded Response: OK
+</msg>
+<arg>Decoded Response: ${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.752996" elapsed="0.000263"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-10-31T16:23:47.753304" elapsed="0.000044"/>
+</return>
+<arg>AT+MFGSECAUTH=1,&gt;St33_D(-d8!)52.</arg>
+<status status="PASS" start="2026-10-31T16:23:47.718685" elapsed="0.034792"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:23:47.701701" elapsed="0.051821"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:23:43.021504" elapsed="4.732053"/>
+</kw>
+<kw name="Switch To The Testing Endpoint" owner="Android_keywords">
+<kw name="Open Settings Screen" owner="Android_keywords">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:55.309072" level="INFO">xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]
+xpath criteria: //android.widget.ImageView[@content-desc="settings"]</msg>
+<arg>${SETTINGS_BUTTON}</arg>
+<arg>timeout=5525s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:23:47.754393" elapsed="7.554754"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:55.310822" level="INFO">Clicking element 'xpath=//android.widget.ImageView[@content-desc="settings"]'.</msg>
+<msg time="2026-10-31T16:23:55.517341" level="INFO">xpath criteria: //android.widget.ImageView[@content-desc="settings"]</msg>
+<arg>${SETTINGS_BUTTON}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:55.309275" elapsed="0.208144"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Hello, user is able to click on the Settings successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:23:55.517563" elapsed="0.000482"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:23:47.754222" elapsed="7.763916"/>
+</kw>
+<kw name="Unlock Developer Options By Tapping Version" owner="Android_keywords">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:55.620050" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:23:55.518683" elapsed="0.101489"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:55.624942" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-31T16:23:56.417058" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:55.621637" elapsed="0.795524"/>
+</kw>
+<var name="${counter}">0</var>
+<status status="PASS" start="2026-10-31T16:23:55.621440" elapsed="0.795768"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:56.419166" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-31T16:23:56.693363" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:56.417458" elapsed="0.276046"/>
+</kw>
+<var name="${counter}">1</var>
+<status status="PASS" start="2026-10-31T16:23:56.417339" elapsed="0.276224"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:56.696356" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-31T16:23:56.946808" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:56.694029" elapsed="0.253013"/>
+</kw>
+<var name="${counter}">2</var>
+<status status="PASS" start="2026-10-31T16:23:56.693746" elapsed="0.253465"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:56.951704" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-31T16:23:57.227366" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:56.948009" elapsed="0.279755"/>
+</kw>
+<var name="${counter}">3</var>
+<status status="PASS" start="2026-10-31T16:23:56.947642" elapsed="0.280389"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:57.230461" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-31T16:23:57.927845" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:57.228595" elapsed="0.699491"/>
+</kw>
+<var name="${counter}">4</var>
+<status status="PASS" start="2026-10-31T16:23:57.228459" elapsed="0.699795"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:57.932751" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-31T16:23:58.146508" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:57.929123" elapsed="0.217461"/>
+</kw>
+<var name="${counter}">5</var>
+<status status="PASS" start="2026-10-31T16:23:57.928717" elapsed="0.217918"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:58.148849" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-31T16:23:58.363528" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:58.146873" elapsed="0.216862"/>
+</kw>
+<var name="${counter}">6</var>
+<status status="PASS" start="2026-10-31T16:23:58.146759" elapsed="0.217125"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:58.367681" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-31T16:23:59.070241" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:58.364532" elapsed="0.705780"/>
+</kw>
+<var name="${counter}">7</var>
+<status status="PASS" start="2026-10-31T16:23:58.364222" elapsed="0.706140"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:59.072282" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-31T16:23:59.315873" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:59.070588" elapsed="0.245448"/>
+</kw>
+<var name="${counter}">8</var>
+<status status="PASS" start="2026-10-31T16:23:59.070480" elapsed="0.245655"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:59.318042" level="INFO">Clicking element 'xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'.</msg>
+<msg time="2026-10-31T16:23:59.576218" level="INFO">xpath criteria: //qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]</msg>
+<arg>${VERSION_ELEMENT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:23:59.316454" elapsed="0.259855"/>
+</kw>
+<var name="${counter}">9</var>
+<status status="PASS" start="2026-10-31T16:23:59.316311" elapsed="0.260068"/>
+</iter>
+<var>${counter}</var>
+<value>${tap_count}</value>
+<status status="PASS" start="2026-10-31T16:23:55.620320" elapsed="3.956114"/>
+</for>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Hello, user is able to Unlock Developer Options By Tapping Version successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:23:59.576649" elapsed="0.000508"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:23:55.518367" elapsed="4.058883"/>
+</kw>
+<kw name="Navigate And Select Testing Endpoint" owner="Android_keywords">
+<kw name="Swipe By Percent" owner="AppiumLibrary">
+<msg time="2026-10-31T16:23:59.578066" level="WARN">Keyword 'Swipe By Percent' will not support int in ms for 'duration' in the future. Use timedelta with units ('ms' or 's') instead.</msg>
+<arg>50</arg>
+<arg>80</arg>
+<arg>50</arg>
+<arg>30</arg>
+<arg>1000</arg>
+<doc>Swipes from one percent of the screen to another percent, for an optional ``duration``.
+Normal swipe fails to scale for different screen resolutions, this can be avoided by using this keyword.</doc>
+<status status="PASS" start="2026-10-31T16:23:59.577788" elapsed="1.645910"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:01.715741" level="INFO">xpath criteria: //android.view.View[@clickable='true'][.//android.widget.TextView[@text='Support API Endpoint']]</msg>
+<arg>${SUPPORT_API_ENDPOINT}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:24:01.224375" elapsed="0.491433"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:01.717664" level="INFO">Clicking element 'xpath=//android.view.View[@clickable='true'][.//android.widget.TextView[@text='Support API Endpoint']]'.</msg>
+<msg time="2026-10-31T16:24:02.826781" level="INFO">xpath criteria: //android.view.View[@clickable='true'][.//android.widget.TextView[@text='Support API Endpoint']]</msg>
+<arg>${SUPPORT_API_ENDPOINT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:24:01.715986" elapsed="1.110860"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Hello, user is able to click on the suppot api endpoint successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:24:02.827005" elapsed="0.000513"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:03.524750" level="INFO">xpath criteria: //android.view.View[@clickable='true'][.//android.widget.TextView[@text='Testing']]</msg>
+<arg>${TESTING_ENDPOINT}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:24:02.827653" elapsed="0.697184"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:03.527199" level="INFO">Clicking element 'xpath=//android.view.View[@clickable='true'][.//android.widget.TextView[@text='Testing']]'.</msg>
+<msg time="2026-10-31T16:24:04.330971" level="INFO">xpath criteria: //android.view.View[@clickable='true'][.//android.widget.TextView[@text='Testing']]</msg>
+<arg>${TESTING_ENDPOINT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:24:03.525044" elapsed="0.806170"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:23:59.577478" elapsed="4.753989"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:23:47.753932" elapsed="16.577710"/>
+</kw>
+<kw name="Login Mobile App" owner="Android_keywords">
+<kw name="Enter Credentials" owner="Android_keywords">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:13.925322" level="INFO">xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]
+xpath criteria: (//android.widget.EditText)[1]</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>timeout=1120s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:24:04.334209" elapsed="9.591208"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:13.927603" level="INFO">Clicking element 'xpath=(//android.widget.EditText)[1]'.</msg>
+<msg time="2026-10-31T16:24:15.136075" level="INFO">xpath criteria: (//android.widget.EditText)[1]</msg>
+<arg>${USERNAME_FIELD}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:24:13.925578" elapsed="1.210602"/>
+</kw>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:15.138238" level="INFO">Typing text 'globalstarapps' into text field 'xpath=(//android.widget.EditText)[1]'</msg>
+<msg time="2026-10-31T16:24:15.328179" level="INFO">xpath criteria: (//android.widget.EditText)[1]</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:24:15.136387" elapsed="0.191887"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The value of the username variable is: ${username}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:24:15.328469" elapsed="0.000625"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:16.088757" level="INFO">xpath criteria: (//android.widget.EditText)[2]</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>timeout=15s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:24:15.329207" elapsed="0.759624"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:16.090930" level="INFO">Clicking element 'xpath=(//android.widget.EditText)[2]'.</msg>
+<msg time="2026-10-31T16:24:17.088506" level="INFO">xpath criteria: (//android.widget.EditText)[2]</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:24:16.088976" elapsed="0.999773"/>
+</kw>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:17.093854" level="INFO">Typing text 'spot1234' into text field 'xpath=(//android.widget.EditText)[2]'</msg>
+<msg time="2026-10-31T16:24:17.315465" level="INFO">xpath criteria: (//android.widget.EditText)[2]</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:24:17.089306" elapsed="0.226333"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The value of the password variable is: ${password}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:24:17.315952" elapsed="0.000870"/>
+</kw>
+<arg>${User1-Details}[username]</arg>
+<arg>${User1-Details}[password]</arg>
+<status status="PASS" start="2026-10-31T16:24:04.333628" elapsed="12.983349"/>
+</kw>
+<kw name="Submit Login Form" owner="Android_keywords">
+<kw name="Hide Keyboard" owner="AppiumLibrary">
+<doc>Hides the software keyboard on the device if it is currently visible.</doc>
+<status status="PASS" start="2026-10-31T16:24:17.317851" elapsed="2.692407"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:20.323190" level="INFO">xpath criteria: //android.widget.Button[ancestor::android.view.View[./android.widget.TextView[@text='LOGIN']]]</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:24:20.010409" elapsed="0.312845"/>
+</kw>
+<kw name="Tap" owner="AppiumLibrary">
+<msg time="2026-10-31T16:24:21.841704" level="INFO">xpath criteria: //android.widget.Button[ancestor::android.view.View[./android.widget.TextView[@text='LOGIN']]]</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Taps the ``element`` for ``count`` times over the ``duration``. </doc>
+<status status="PASS" start="2026-10-31T16:24:20.323378" elapsed="1.518565"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Hello, Varibales entered successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:24:21.842484" elapsed="0.001398"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Hello, user is able to click on the login successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:24:21.844419" elapsed="0.001271"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:24:17.317327" elapsed="4.528643"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:24:04.332572" elapsed="17.513577"/>
+</kw>
+<kw name="Perform Firmware Update Process" owner="Android_keywords">
+<kw name="Interact With Config Update Button" owner="Android_keywords">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:25:45.897049" level="INFO">xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]
+xpath criteria: //android.view.View[@content-desc="Config/Update"]</msg>
+<arg>${BTN_CONFIG_UPDATE}</arg>
+<arg>timeout=2145s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:24:21.848848" elapsed="84.048446"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:25:45.899160" level="INFO">Clicking element 'xpath=//android.view.View[@content-desc="Config/Update"]'.</msg>
+<msg time="2026-10-31T16:25:46.087725" level="INFO">xpath criteria: //android.view.View[@content-desc="Config/Update"]</msg>
+<arg>${BTN_CONFIG_UPDATE}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:25:45.897500" elapsed="0.190358"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-31T16:26:01.088910" level="INFO">Slept 15 seconds.</msg>
+<arg>15s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-10-31T16:25:46.088069" elapsed="15.000930"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>User is able to Interact With Config Update Button successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:26:01.089138" elapsed="0.000391"/>
+</kw>
+<doc>Verifies that the Config/Update button is clickable and executes the action.</doc>
+<status status="PASS" start="2026-10-31T16:24:21.848144" elapsed="99.241455"/>
+</kw>
+<kw name="Select Update From Popup List" owner="Android_keywords">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:01.761455" level="INFO">xpath criteria: //android.view.View[./android.widget.TextView[@text='CONFIG/UPDATE']]/android.widget.TextView[@text='Update']</msg>
+<arg>${ITEM_UPDATE}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:26:01.089961" elapsed="0.671565"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:01.763364" level="INFO">Clicking element 'xpath=//android.view.View[./android.widget.TextView[@text='CONFIG/UPDATE']]/android.widget.TextView[@text='Update']'.</msg>
+<msg time="2026-10-31T16:26:02.832505" level="INFO">xpath criteria: //android.view.View[./android.widget.TextView[@text='CONFIG/UPDATE']]/android.widget.TextView[@text='Update']</msg>
+<arg>${ITEM_UPDATE}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:26:01.761690" elapsed="1.070942"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>User is able to Select Update From Popup List successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:26:02.832874" elapsed="0.000660"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-31T16:26:17.834627" level="INFO">Slept 15 seconds.</msg>
+<arg>15s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-10-31T16:26:02.833701" elapsed="15.001096"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:26:01.089737" elapsed="16.745212"/>
+</kw>
+<kw name="Select INT200 From Popup List" owner="Android_keywords">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:18.536986" level="INFO">xpath criteria: //android.view.View[./android.widget.TextView[@text='UPDATE']]/android.widget.TextView[@text='INTEGRITY 200']</msg>
+<arg>${ITEM_INT200}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:26:17.835772" elapsed="0.701286"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:18.538853" level="INFO">Clicking element 'xpath=//android.view.View[./android.widget.TextView[@text='UPDATE']]/android.widget.TextView[@text='INTEGRITY 200']'.</msg>
+<msg time="2026-10-31T16:26:19.292685" level="INFO">xpath criteria: //android.view.View[./android.widget.TextView[@text='UPDATE']]/android.widget.TextView[@text='INTEGRITY 200']</msg>
+<arg>${ITEM_INT200}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:26:18.537229" elapsed="0.755600"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>User is able to Select INT200 From Popup List successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:26:19.293070" elapsed="0.000609"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-31T16:26:34.294419" level="INFO">Slept 15 seconds.</msg>
+<arg>15s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-10-31T16:26:19.293829" elapsed="15.000677"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:26:17.835282" elapsed="16.459293"/>
+</kw>
+<kw name="Select Device And Proceed To Review" owner="Android_keywords">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:34.484928" level="INFO">xpath criteria: //android.widget.TextView[contains(@text, 'devices selected')]</msg>
+<arg>${TXT_SELECTION_COUNT}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:26:34.294976" elapsed="0.190066"/>
+</kw>
+<kw name="Get Text" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:34.649670" level="INFO">Element 'xpath=//android.widget.TextView[contains(@text, 'devices selected')]' text is '0 devices selected' </msg>
+<msg time="2026-10-31T16:26:34.649769" level="INFO">xpath criteria: //android.widget.TextView[contains(@text, 'devices selected')]</msg>
+<msg time="2026-10-31T16:26:34.649901" level="INFO">${initial_text} = 0 devices selected</msg>
+<var>${initial_text}</var>
+<arg>${TXT_SELECTION_COUNT}</arg>
+<doc>Returns the text of the element with the ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:26:34.485235" elapsed="0.164704"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${initial_text}</arg>
+<arg>0 devices selected</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-10-31T16:26:34.650142" elapsed="0.000547"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Verify initial state shows 0 devices selected.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:26:34.650867" elapsed="0.000465"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:34.839570" level="INFO">xpath criteria: //android.view.View[.//android.widget.TextView[@text='gst-010010696390']]/android.view.View[@content-desc='selector_indicator']</msg>
+<arg>${RADIO_DEVICE_GST}</arg>
+<arg>timeout=15s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:26:34.651506" elapsed="0.188183"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:34.841417" level="INFO">Clicking element 'xpath=//android.view.View[.//android.widget.TextView[@text='gst-010010696390']]/android.view.View[@content-desc='selector_indicator']'.</msg>
+<msg time="2026-10-31T16:26:35.065587" level="INFO">xpath criteria: //android.view.View[.//android.widget.TextView[@text='gst-010010696390']]/android.view.View[@content-desc='selector_indicator']</msg>
+<arg>${RADIO_DEVICE_GST}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:26:34.839845" elapsed="0.225890"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Click the radio indicator button next to the device name.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:26:35.065965" elapsed="0.000420"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:35.176866" level="INFO">xpath criteria: //android.view.View[@clickable='true' and .//android.widget.TextView[@text='REVIEW DEVICES TO UPDATE']]</msg>
+<arg>${BTN_REVIEW_DEVICES}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:26:35.066500" elapsed="0.110463"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:35.178712" level="INFO">Clicking element 'xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='REVIEW DEVICES TO UPDATE']]'.</msg>
+<msg time="2026-10-31T16:26:35.364233" level="INFO">xpath criteria: //android.view.View[@clickable='true' and .//android.widget.TextView[@text='REVIEW DEVICES TO UPDATE']]</msg>
+<arg>${BTN_REVIEW_DEVICES}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:26:35.177108" elapsed="0.187232"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Click the "REVIEW DEVICES TO UPDATE" confirmation button.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:26:35.364629" elapsed="0.000497"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-31T16:26:40.366168" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-10-31T16:26:35.365292" elapsed="5.000974"/>
+</kw>
+<doc>Selects the device row, validates the counter, and clicks the review update button.</doc>
+<status status="PASS" start="2026-10-31T16:26:34.294755" elapsed="6.071593"/>
+</kw>
+<kw name="Execute Firmware Update" owner="Android_keywords">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:40.542342" level="INFO">xpath criteria: //android.view.View[@clickable="true"]//android.widget.TextView[@text="UPDATE"]</msg>
+<arg>${BTN_UPDATE}</arg>
+<arg>timeout=5</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:26:40.366782" elapsed="0.175635"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:40.544453" level="INFO">Clicking element 'xpath=//android.view.View[@clickable="true"]//android.widget.TextView[@text="UPDATE"]'.</msg>
+<msg time="2026-10-31T16:26:40.729181" level="INFO">xpath criteria: //android.view.View[@clickable="true"]//android.widget.TextView[@text="UPDATE"]</msg>
+<arg>${BTN_UPDATE}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:26:40.542568" elapsed="0.186683"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Click the "UPDATE" confirmation button.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:26:40.729392" elapsed="0.000437"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:26:40.366530" elapsed="0.363365"/>
+</kw>
+<kw name="Handle Warning And Continue Update" owner="Android_keywords">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:42.237518" level="INFO">xpath criteria: //android.view.ViewGroup//android.view.View[@index="2"]/android.widget.TextView</msg>
+<arg>${BTN_CONTINUE_UPDATE}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-31T16:26:40.730240" elapsed="1.507350"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:42.239526" level="INFO">Clicking element 'xpath=//android.view.ViewGroup//android.view.View[@index="2"]/android.widget.TextView'.</msg>
+<msg time="2026-10-31T16:26:42.965817" level="INFO">xpath criteria: //android.view.ViewGroup//android.view.View[@index="2"]/android.widget.TextView</msg>
+<arg>${BTN_CONTINUE_UPDATE}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-31T16:26:42.237733" elapsed="0.728189"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Click the "CONTINUE UPDATE" confirmation button.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:26:42.966120" elapsed="0.000513"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-31T16:26:52.967941" level="INFO">Slept 10 seconds.</msg>
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-10-31T16:26:42.966768" elapsed="10.001295"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:26:40.730032" elapsed="12.238124"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:24:21.847003" elapsed="151.121207"/>
+</kw>
+<kw name="Check Firmware Update Status - No Update Needed" owner="Android_keywords">
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>No update needed</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-10-31T16:26:52.968952" elapsed="0.122930"/>
+</kw>
+<kw name="Page Should Contain Text" owner="AppiumLibrary">
+<msg time="2026-10-31T16:26:53.147079" level="INFO">Current page contains text 'No update needed'.</msg>
+<arg>No update needed</arg>
+<doc>Verifies that the current page contains ``text``.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.092028" elapsed="0.055126"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Success: The Firmware is already up to date "No update needed."</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.147294" elapsed="0.000342"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:26:52.968601" elapsed="0.179101"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>message=Checking the Device FW version with AT command</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.147871" elapsed="0.000279"/>
+</kw>
+<kw name="Read AT command" owner="Firmware_keywords">
+<kw name="Send AT Command" owner="Firmware_keywords">
+<kw name="Write Data" owner="SerialLibrary">
+<arg>${command}${TERMINATOR}</arg>
+<arg>encoding=utf-8</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.148881" elapsed="0.000457"/>
+</kw>
+<kw name="Read Until" owner="SerialLibrary">
+<msg time="2026-10-31T16:26:53.178870" level="INFO">${hex_response} = 2B 43 47 4D 52 3A 20 30 2E 32 2E 30 2C 31 2E 30 2E 30 2C 31 2E 36 2E 30 2C 31 2E 37 2E 33 2C 33 2E 30 2E 30 2C 30 2E 32 2E 30 0D 0A 4F 4B 0D 0A</msg>
+<var>${hex_response}</var>
+<arg>${TERMINATOR}</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.149455" elapsed="0.029471"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2026-10-31T16:26:53.179423" level="INFO">${clean_hex} = 2B43474D523A20302E322E302C312E302E302C312E362E302C312E372E332C332E302E302C302E322E300D0A4F4B0D0A</msg>
+<var>${clean_hex}</var>
+<arg>${hex_response}</arg>
+<arg>${SPACE}</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.179108" elapsed="0.000349"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-31T16:26:53.180546" level="INFO">${bytes} = +CGMR: 0.2.0,1.0.0,1.6.0,1.7.3,3.0.0,0.2.0
+OK
+</msg>
+<var>${bytes}</var>
+<arg>bytes.fromhex('${clean_hex}')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.179598" elapsed="0.000987"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-31T16:26:53.181459" level="INFO">${response} = +CGMR: 0.2.0,1.0.0,1.6.0,1.7.3,3.0.0,0.2.0
+OK
+</msg>
+<var>${response}</var>
+<arg>$bytes.decode('utf-8')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.180734" elapsed="0.000766"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-10-31T16:26:53.181978" level="INFO">Decoded Response: +CGMR: 0.2.0,1.0.0,1.6.0,1.7.3,3.0.0,0.2.0
+OK
+</msg>
+<arg>Decoded Response: ${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.181654" elapsed="0.000385"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-10-31T16:26:53.182140" elapsed="0.000073"/>
+</return>
+<msg time="2026-10-31T16:26:53.182388" level="INFO">${response} = +CGMR: 0.2.0,1.0.0,1.6.0,1.7.3,3.0.0,0.2.0
+OK
+</msg>
+<var>${response}</var>
+<arg>AT+CGMR?</arg>
+<status status="PASS" start="2026-10-31T16:26:53.148672" elapsed="0.033749"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response}</arg>
+<arg>0.2.0</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.182549" elapsed="0.000607"/>
+</kw>
+<doc>Checks if the device responds to a basic AT ping.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.148392" elapsed="0.034847"/>
+</kw>
+<kw name="Suite And Device Teardown" owner="Android_keywords" type="TEARDOWN">
+<kw name="Stop Realm Application" owner="Android_config">
+<kw name="Close Application" owner="AppiumLibrary">
+<doc>Closes the current application and the webdriver session.</doc>
+<status status="PASS" start="2026-10-31T16:26:53.184135" elapsed="0.904119"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:26:53.183947" elapsed="0.904437"/>
+</kw>
+<status status="PASS" start="2026-10-31T16:26:53.183658" elapsed="0.904784"/>
+</kw>
+<doc>Test case to verify the firmware update status - No Update needed</doc>
+<status status="PASS" start="2026-10-31T16:23:43.020473" elapsed="191.068218"/>
+</test>
+<status status="PASS" start="2026-10-31T16:23:42.461190" elapsed="191.628369"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Check fw update status tests" id="s1" pass="1" fail="0" skip="0">Check fw update status tests</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-10-31T16:23:59.578066" level="WARN">Keyword 'Swipe By Percent' will not support int in ms for 'duration' in the future. Use timedelta with units ('ms' or 's') instead.</msg>
+</errors>
+</robot>

@@ -4,8 +4,8 @@ Resource          ../../Resources/Android_keywords.resource
 
 
 
-Test Setup        Start Realm Application
-Test Teardown     Stop Realm Application
+Test Setup        Suite And Device Setup
+Test Teardown     Suite And Device Teardown
 
 *** Test Cases ***
 Verify User Can Switch To Testing Endpoint And Login

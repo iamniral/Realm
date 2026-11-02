@@ -7,7 +7,7 @@ Library    Process
 
 *** Variables ***
 ${OUTPUT_DIR}    ${CURDIR}/../Output
-${PORT}          COM32          # Or /dev/ttyUSB0 on Linux
+${PORT}          COM18          # Or /dev/ttyUSB0 on Linux
 ${BAUD}          115200
 ${TERMINATOR}    \r\n
 
@@ -18,7 +18,8 @@ Connect To Nordic Device
     Add Port    ${PORT}    baudrate=${BAUD}    timeout=2
     Open Port   ${PORT}
     Reset Input Buffer    ${PORT}
-    Send AT Command    AT+MFGSECAUTH=1,asu'zfzU{Mj\#O[4V
+    Send AT Command    AT+MFGSECAUTH=1,>St33_D(-d8!)52.
+
 
 
 Send AT Command
@@ -36,3 +37,9 @@ Send AT Command
 
     Log    Decoded Response: ${response}
     RETURN    ${response}
+
+
+Read AT command
+    [Documentation]    Checks if the device responds to a basic AT ping.
+    ${response} =    Send AT Command    AT+CGMR?
+    should contain    ${response}    0.2.0   

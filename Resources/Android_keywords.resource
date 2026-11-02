@@ -1,8 +1,19 @@
 *** Settings ***
 Library           AppiumLibrary
 Resource          ../Locators/Android_Locators.resource
+Resource          ../Config/Android_config.resource
+Resource          ../Resources/Firmware_keywords.resource
 
 *** Keywords ***
+
+Suite And Device Setup
+    Start Realm Application
+    Connect To Nordic Device
+
+Suite And Device Teardown
+    Stop Realm Application
+    # Close All Ports
+
 # Login Page Keywords
 Enter Credentials
     [Arguments]    ${username}    ${password}
@@ -72,7 +83,7 @@ Interact With Filter Button
     
 Interact With Config Update Button
     [Documentation]    Verifies that the Config/Update button is clickable and executes the action.
-    Wait Until Element Is Visible    ${BTN_CONFIG_UPDATE}    timeout=245s
+    Wait Until Element Is Visible    ${BTN_CONFIG_UPDATE}    timeout=2145s
     Click Element                    ${BTN_CONFIG_UPDATE}
     # Pauses execution for exactly 15 seconds before moving to the next test or teardown
     Sleep                            15s
@@ -138,7 +149,7 @@ Handle Warning And Continue Update
     Click Element                    ${BTN_CONTINUE_UPDATE}
     # Log the action to the console terminal
     Log To Console    Click the "CONTINUE UPDATE" confirmation button.
-    sleep      5m
+    sleep      10s
 
 Check Firmware Update Success Status
     [Documentation]    Validates that the update is successful when 'Update complete' appears.

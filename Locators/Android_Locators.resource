@@ -28,9 +28,10 @@ ${TITLE_LOCATOR}             xpath=//android.view.View[./android.widget.TextView
 #config button
 ${CONFIG_UPDATE_BUTTON}      xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Config/Update']]
 
+
 # Highly specific button locators based on the screen layout
 ${BTN_FILTER}                xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Filter']]
-${BTN_CONFIG_UPDATE}         xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Config/Update']]
+${BTN_CONFIG_UPDATE}         xpath=//android.view.View[@content-desc="Config/Update"]
 ${BTN_POWER_OFF}             xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Power Off']]
 
 # configuration field from the list

@@ -2,8 +2,8 @@
 Resource          ../../Config/Android_config.resource
 Resource          ../../Resources/Android_keywords.resource
 
-Test Setup        Start Realm Application
-Test Teardown     Stop Realm Application
+Test Setup        Suite And Device Setup
+Test Teardown     Suite And Device Teardown
 
 
 *** Test Cases ***

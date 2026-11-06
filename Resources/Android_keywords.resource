@@ -1,5 +1,7 @@
 *** Settings ***
 Library           AppiumLibrary
+Library           String
+Library           Collections
 Resource          ../Locators/Android_Locators.resource
 Resource          ../Config/Android_config.resource
 Resource          ../Resources/Firmware_keywords.resource
@@ -86,7 +88,7 @@ Interact With Config Update Button
     Wait Until Element Is Visible    ${BTN_CONFIG_UPDATE}    timeout=2145s
     Click Element                    ${BTN_CONFIG_UPDATE}
     # Pauses execution for exactly 15 seconds before moving to the next test or teardown
-    Sleep                            15s
+    Sleep                            5s
     Log To Console    User is able to Interact With Config Update Button successfully.
     # TODO: Add verification keyword here for the Configuration screen change
 
@@ -100,21 +102,21 @@ Select Configuration From Popup List
     Wait Until Element Is Visible    ${ITEM_CONFIGURATION}    timeout=10s
     Click Element                    ${ITEM_CONFIGURATION}
     Log To Console    User is able to Select Configuration From Popup List successfully.
-    Sleep                            10s
+    Sleep                            5s
 
 Select Update From Popup List
     #select the configuration from the popup list
     Wait Until Element Is Visible    ${ITEM_UPDATE}    timeout=10s
     Click Element                    ${ITEM_UPDATE}
     Log To Console    User is able to Select Update From Popup List successfully.
-    Sleep                            15s
+    Sleep                            5s
 
 Select INT200 From Popup List
     #select the configuration from the popup list
     Wait Until Element Is Visible    ${ITEM_INT200}    timeout=10s
     Click Element                    ${ITEM_INT200}
     Log To Console    User is able to Select INT200 From Popup List successfully.
-    Sleep                            15s
+    Sleep                            5s
 
 Select Device And Proceed To Review
     [Documentation]    Selects the device row, validates the counter, and clicks the review update button.
@@ -149,7 +151,10 @@ Handle Warning And Continue Update
     Click Element                    ${BTN_CONTINUE_UPDATE}
     # Log the action to the console terminal
     Log To Console    Click the "CONTINUE UPDATE" confirmation button.
-    sleep      10s
+    # Wait for the CONTINUE UPDATE button to appear on the warning pop-up
+    Determine Firmware Update Result
+
+
 
 Check Firmware Update Success Status
     [Documentation]    Validates that the update is successful when 'Update complete' appears.
@@ -170,12 +175,54 @@ Check Firmware Update Status - No Update Needed
 
 Perform Firmware Update Process
     #Select Configuration From Popup List  
+    Give The Permission
     Interact With Config Update Button
     Select Update From Popup List
     Select INT200 From Popup List
     Select Device And Proceed To Review
     Execute Firmware Update
     Handle Warning And Continue Update
+
+     # Call the new dynamic status inspector immediately after execution completes
+    #Determine Firmware Update Result
+
+Determine Firmware Update Result
+    [Documentation]    Dynamically inspects the screen post-update execution 
+    ...                to safely determine if it succeeded, failed, or was skipped.
+    [Arguments]    ${timeout}=180s    ${poll_interval}=2s
+
+    WHILE    True    limit=${timeout}
+        # 1. Check for SUCCESS
+        ${is_success}=    Run Keyword And Return Status    Wait Until Element Is Visible     ${UPDATE_HEADER_XPATH}
+        IF    ${is_success}
+            Log To Console    \n[RESULT] Update Status: SUCCESSFUL! ('Update complete' is visible)
+            Wait Until Element Is Visible    ${ACKNOWLEDGE_BTN}    timeout=5s
+            Click Element                    ${ACKNOWLEDGE_BTN}
+            RETURN
+        END
+
+        # 2. Check for NO UPDATE NEEDED
+        ${no_update_needed}=    Run Keyword And Return Status   Page Should Contain Text    No update needed
+        IF    ${no_update_needed}
+            Log To Console    \n[RESULT] Update Status: SKIPPED! (Firmware is already up to date)
+            Wait Until Element Is Visible    ${ACKNOWLEDGE_BTN}    timeout=5s
+            Click Element                    ${ACKNOWLEDGE_BTN}
+            RETURN
+        END
+
+        # 3. Check for explicit FAILURE
+        ${is_failure}=    Run Keyword And Return Status   Wait Until Element Is Visible     ${FAILURE_HEADER_XPATH}
+        IF    ${is_failure}
+            Fail    \n[RESULT] Update Status: FAILED! (An error layout was captured on screen)
+            Wait Until Element Is Visible    ${ACKNOWLEDGE_BTN}    timeout=5s
+            Click Element                    ${ACKNOWLEDGE_BTN}
+        END
+
+        Sleep    ${poll_interval}
+    END
+
+    # If timeout limit is reached without encountering any valid final state
+    Fail    \n[RESULT] Update Status: FAILED! (The process timed out after ${timeout} without reaching a valid final screen state)
 
 Check the Firmware Update Status - Success
     Check Firmware Update Success Status
@@ -190,7 +237,7 @@ Scroll Down Until Text Is Found
 
 Give The Permission
    # Tap allow on the permission dialog
-    Wait Until Element Is Visible    ${Alow_Permission}
+    Wait Until Element Is Visible    ${Alow_Permission}  timeout=10s
     Click Element         ${Alow_Permission}
 
 Open Config Screen
@@ -242,3 +289,71 @@ Apply Config Profile and Validate Result
 
     # 2. Assert that the text is present, else throw a custom failure message
     Page Should Contain Text      Update complete    error=Test Failed: 'Update complete' confirmation text was not found on the screen.
+
+
+Click Acknowledge Button
+    [Documentation]    Clicks the ACKNOWLEDGE button on the update report screen.
+    #Clicks the ACKNOWLEDGE button on the update report screen
+    Wait Until Element Is Visible    xpath=${Acknowledge_Button}    timeout=10s   
+    Click Element      ${Acknowledge_Button}
+
+Verify Device Software Version
+    [Documentation]    Locates the version text node and verifies it matches v 0.2.0.
+   
+    # Wait for the version text element to be visible on the screen
+    Wait Until Element Is Visible    xpath=${VERSION_XPATH}    timeout=10s
+    
+    # Retrieve the text from the located element
+    ${actual_version}=    Get Text    xpath=${VERSION_XPATH}
+    
+    # Compare and verify that the actual text matches the expected value
+    Should Be Equal As Strings    ${actual_version}    ${EXPECTED_VERSION}    
+
+Verify Nordic Version vs Mobile app fw version
+    [Documentation]    Verify Nordic Version vs Mobile app fw version
+
+    # 1. Fetch the version text displayed on the mobile app UI (e.g., "v 0.2.0")
+    Wait Until Element Is Visible    xpath=${VERSION_XPATH}    timeout=10s
+    ${FW_version_raw}=               Get Text    xpath=${VERSION_XPATH}
+    
+    # 2. Clean the string to handle potential formatting variations (e.g., stripping "v " to leave "0.2.0")
+    ${FW_version_clean}=             Replace String    ${FW_version_raw}    v${SPACE}    ${EMPTY}
+    ${FW_version_clean}=             Strip String      ${FW_version_clean}
+    # 3. Request the hardware internal firmware value via serial link
+    ${at_response}=                  Send AT Command    AT+CGMR?
+    # 1. Clean the prefix text
+    ${clean_csv}=       Replace String    ${at_response}    +CGMR:${SPACE}    ${EMPTY}
+    
+    # 2. Break string cleanly into a list variable array
+    @{version_list}=    Split String      ${clean_csv}      ,
+    
+    # 3. Safely target array index 0 
+    ${first_version}=   Get From List     ${version_list}    0
+    
+    # 4. Enforce strict matching using standard string equality
+    BuiltIn.Should Be Equal As Strings    ${first_version}    ${FW_version_clean}
+    ...    msg=Expected first value to be ${FW_version_clean} but found ${first_version}
+
+Verify Aggregate Version vs Mobile App FW Version
+    [Documentation]    Verify Aggregate Version vs Mobile app fw version
+    # 1. Mobile app UI extraction
+    Wait Until Element Is Visible    xpath=${VERSION_XPATH}    timeout=10s
+    ${FW_version_raw}=               Get Text    xpath=${VERSION_XPATH}
+    ${FW_version_clean}=             Replace String    ${FW_version_raw}    v${SPACE}    ${EMPTY}
+    ${FW_version_clean}=             Strip String      ${FW_version_clean}
+    # 2. Hardware AT command response
+    ${at_response}=                  Send AT Command   AT+CGMR?
+    
+    # --- FIX: Strip 'OK', carriage returns (\r), and newlines (\n) ---
+    ${clean_csv}=       Replace String Using Regexp    ${at_response}    (?i)\\bOK\\b    ${EMPTY}
+    ${clean_csv}=       Replace String                 ${clean_csv}      +CGMR:${SPACE}  ${EMPTY}
+    ${clean_csv}=       Strip String                   ${clean_csv}
+    
+    # 3. Split by comma and get last element
+    @{version_list}=    Split String      ${clean_csv}       ,
+    ${last_version}=    Get From List     ${version_list}    -1
+    ${last_version}=    Strip String      ${last_version}    # Strip any remaining whitespace
+    
+    # 4. Verify match
+    Should Be Equal As Strings    ${last_version}    ${FW_version_clean}
+    ...    msg=Expected last value to be '${FW_version_clean}' but found '${last_version}'

@@ -23,7 +23,8 @@ ${ConfigUpdate_Button}       xpath=//qp1/android.view.View/android.view.View/and
 ${Configuration_Button}      xpath=//android.widget.TextView[@text="Configuration"]
 ${Intergrity200_Button}      xpath=//android.widget.TextView[@text="INTEGRITY 200"]
 ${Config_Profile_Name}       Std_USB_D_12_A_34
-${Alow_Permission}           xpath=//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]
+${Alow_Permission1}           xpath=//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]
+${Alow_Permission}           xpath=//android.widget.Button[contains(@text, 'Allow') or contains(@text, 'while using the app')]
 ${TITLE_LOCATOR}             xpath=//android.view.View[./android.widget.TextView[@text='Scan']]
 #config button
 ${CONFIG_UPDATE_BUTTON}      xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Config/Update']]
@@ -50,8 +51,20 @@ ${BTN_UPDATE}                xpath=//android.view.View[@clickable="true"]//andro
 ${BTN_CONTINUE_UPDATE}       xpath=//android.view.ViewGroup//android.view.View[@index="2"]/android.widget.TextView
 ${PAGE_TITLE}                xpath=//android.view.View/android.view.View/android.widget.TextView[@index="0" and parent::android.view.View]
 ${PROGRESS_BAR}              xpath=//android.widget.ProgressBar or //android.widget.TextView[contains(@text, "Updating application")]
-${UPDATE_HEADER_XPATH}       xpath=//android.widget.TextView[contains(@text, "Update complete")]
+${UPDATE_HEADER_XPATH}       xpath=//android.widget.TextView[@text="Completed"]
 ${ACKNOWLEDGE_BTN}           xpath=//android.widget.TextView[@text="ACKNOWLEDGE"]/following-sibling::android.widget.Button
 #${DEVICE_ID}      //android.widget.TextView[contains(@text, 'gst-010005949515')]
 ${STATUS_XPATH}    //android.widget.TextView[@text='No update needed']
 #${STATUS_XPATH}              xpath=//android.widget.TextView[contains(@text='No update needed')]
+
+${Acknowledge_Button}         //android.widget.TextView[@text="ACKNOWLEDGE"]/following-sibling::android.widget.Button
+
+#${VERSION_XPATH}   //android.view.View[@clickable="true"])[1]//android.widget.TextView[@text="v 0.2.0"]
+${VERSION_XPATH}    //android.widget.TextView[@text="gst-010010696390"]/following-sibling::android.widget.TextView[1]
+
+${EXPECTED_VERSION}   v 0.2.0
+
+#${UPDATE_HEADER_XPATH}    //android.widget.TextView[@text="Update complete"]
+#${ACKNOWLEDGE_BTN}       //android.widget.TextView[@text="ACKNOWLEDGE"]/parent::android.view.View
+# Add a failure locator based on your UI's error screen layout if applicable
+${FAILURE_HEADER_XPATH}   //android.widget.TextView[@text="gst-010010696390"]/following-sibling::android.widget.TextView[@text="Failed"]

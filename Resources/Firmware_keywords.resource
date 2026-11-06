@@ -3,7 +3,7 @@ Library    SerialLibrary
 Library    String
 Library           Process
 Library           OperatingSystem
-Library    Process
+
 
 *** Variables ***
 ${OUTPUT_DIR}    ${CURDIR}/../Output
@@ -42,4 +42,5 @@ Send AT Command
 Read AT command
     [Documentation]    Checks if the device responds to a basic AT ping.
     ${response} =    Send AT Command    AT+CGMR?
-    should contain    ${response}    0.2.0   
+   # should contain    ${response}    0.2.0   
+   

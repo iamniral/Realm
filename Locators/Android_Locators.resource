@@ -4,7 +4,7 @@ Library           AppiumLibrary
 *** Variables ***
 
 #*** Test Variable ***
-&{User1-Details}        username=globalstarapps       password=spot1234
+&{User1-Details}        username=globalstarapps       password=SpotTest26!
 
 # Login Page Elements
 ${USERNAME_FIELD}            xpath=(//android.widget.EditText)[1]
@@ -15,11 +15,11 @@ ${LOGIN_BUTTON}              xpath=//android.widget.Button[ancestor::android.vie
 ${SETTINGS_BUTTON}           xpath=//android.widget.ImageView[@content-desc="settings"]
 #${VERSION_ELEMENT}           xpath=//android.view.View[@bounds='[0,341][1080,2240]']/android.view.View[@index='3']
 #${VERSION_ELEMENT}           xpath=/android.widget.TextView[@text="2.7.2 (1008)"]
-${VERSION_ELEMENT}           xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]
+${VERSION_ELEMENT}           xpath=//op1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]
 ${SUPPORT_API_ENDPOINT}      xpath=//android.view.View[@clickable='true'][.//android.widget.TextView[@text='Support API Endpoint']]
 ${TESTING_ENDPOINT}          xpath=//android.view.View[@clickable='true'][.//android.widget.TextView[@text='Testing']]
 #Configuration Page Elements
-${ConfigUpdate_Button}       xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]
+${ConfigUpdate_Button}       xpath=//op1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]
 ${Configuration_Button}      xpath=//android.widget.TextView[@text="Configuration"]
 ${Intergrity200_Button}      xpath=//android.widget.TextView[@text="INTEGRITY 200"]
 ${Config_Profile_Name}       Std_USB_D_12_A_34
@@ -68,3 +68,5 @@ ${EXPECTED_VERSION}   v 0.2.0
 #${ACKNOWLEDGE_BTN}       //android.widget.TextView[@text="ACKNOWLEDGE"]/parent::android.view.View
 # Add a failure locator based on your UI's error screen layout if applicable
 ${FAILURE_HEADER_XPATH}   //android.widget.TextView[@text="gst-010010696390"]/following-sibling::android.widget.TextView[@text="Failed"]
+#${LATEST_FW_VERSION}      //android.widget.TextView[@text="The following devices will be updated to the latest firmware version 0.2.0:"]
+${LATEST_FW_VERSION}      //android.widget.TextView[@text="Updating devices to firmware version 0.2.0 …"]

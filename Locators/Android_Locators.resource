@@ -4,7 +4,7 @@ Library           AppiumLibrary
 *** Variables ***
 
 #*** Test Variable ***
-&{User1-Details}        username=globalstarapps       password=spot1234
+&{User1-Details}        username=globalstarapps       password=SpotTest26!
 
 # Login Page Elements
 ${USERNAME_FIELD}            xpath=(//android.widget.EditText)[1]
@@ -15,22 +15,24 @@ ${LOGIN_BUTTON}              xpath=//android.widget.Button[ancestor::android.vie
 ${SETTINGS_BUTTON}           xpath=//android.widget.ImageView[@content-desc="settings"]
 #${VERSION_ELEMENT}           xpath=//android.view.View[@bounds='[0,341][1080,2240]']/android.view.View[@index='3']
 #${VERSION_ELEMENT}           xpath=/android.widget.TextView[@text="2.7.2 (1008)"]
-${VERSION_ELEMENT}           xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]
+${VERSION_ELEMENT}           xpath=//op1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]
 ${SUPPORT_API_ENDPOINT}      xpath=//android.view.View[@clickable='true'][.//android.widget.TextView[@text='Support API Endpoint']]
 ${TESTING_ENDPOINT}          xpath=//android.view.View[@clickable='true'][.//android.widget.TextView[@text='Testing']]
 #Configuration Page Elements
-${ConfigUpdate_Button}       xpath=//qp1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]
+${ConfigUpdate_Button}       xpath=//op1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]
 ${Configuration_Button}      xpath=//android.widget.TextView[@text="Configuration"]
 ${Intergrity200_Button}      xpath=//android.widget.TextView[@text="INTEGRITY 200"]
 ${Config_Profile_Name}       Std_USB_D_12_A_34
-${Alow_Permission}           xpath=//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]
+${Alow_Permission1}           xpath=//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]
+${Alow_Permission}           xpath=//android.widget.Button[contains(@text, 'Allow') or contains(@text, 'while using the app')]
 ${TITLE_LOCATOR}             xpath=//android.view.View[./android.widget.TextView[@text='Scan']]
 #config button
 ${CONFIG_UPDATE_BUTTON}      xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Config/Update']]
 
+
 # Highly specific button locators based on the screen layout
 ${BTN_FILTER}                xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Filter']]
-${BTN_CONFIG_UPDATE}         xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Config/Update']]
+${BTN_CONFIG_UPDATE}         xpath=//android.view.View[@content-desc="Config/Update"]
 ${BTN_POWER_OFF}             xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Power Off']]
 
 # configuration field from the list
@@ -49,8 +51,22 @@ ${BTN_UPDATE}                xpath=//android.view.View[@clickable="true"]//andro
 ${BTN_CONTINUE_UPDATE}       xpath=//android.view.ViewGroup//android.view.View[@index="2"]/android.widget.TextView
 ${PAGE_TITLE}                xpath=//android.view.View/android.view.View/android.widget.TextView[@index="0" and parent::android.view.View]
 ${PROGRESS_BAR}              xpath=//android.widget.ProgressBar or //android.widget.TextView[contains(@text, "Updating application")]
-${UPDATE_HEADER_XPATH}       xpath=//android.widget.TextView[contains(@text, "Update complete")]
+${UPDATE_HEADER_XPATH}       xpath=//android.widget.TextView[@text="Completed"]
 ${ACKNOWLEDGE_BTN}           xpath=//android.widget.TextView[@text="ACKNOWLEDGE"]/following-sibling::android.widget.Button
 #${DEVICE_ID}      //android.widget.TextView[contains(@text, 'gst-010005949515')]
 ${STATUS_XPATH}    //android.widget.TextView[@text='No update needed']
 #${STATUS_XPATH}              xpath=//android.widget.TextView[contains(@text='No update needed')]
+
+${Acknowledge_Button}         //android.widget.TextView[@text="ACKNOWLEDGE"]/following-sibling::android.widget.Button
+
+#${VERSION_XPATH}   //android.view.View[@clickable="true"])[1]//android.widget.TextView[@text="v 0.2.0"]
+${VERSION_XPATH}    //android.widget.TextView[@text="gst-010010696390"]/following-sibling::android.widget.TextView[1]
+
+${EXPECTED_VERSION}   v 0.2.0
+
+#${UPDATE_HEADER_XPATH}    //android.widget.TextView[@text="Update complete"]
+#${ACKNOWLEDGE_BTN}       //android.widget.TextView[@text="ACKNOWLEDGE"]/parent::android.view.View
+# Add a failure locator based on your UI's error screen layout if applicable
+${FAILURE_HEADER_XPATH}   //android.widget.TextView[@text="gst-010010696390"]/following-sibling::android.widget.TextView[@text="Failed"]
+#${LATEST_FW_VERSION}      //android.widget.TextView[@text="The following devices will be updated to the latest firmware version 0.2.0:"]
+${LATEST_FW_VERSION}      //android.widget.TextView[@text="Updating devices to firmware version 0.2.0 …"]
